@@ -1,14 +1,222 @@
 .main {
   display: flex;
+  margin: 64px auto;
+  gap: 64px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
+  overflow-x: visible;
+  /* md: 48rem (768px) */
+  @media (min-width: 48rem) {
+    padding: 0 24px;
+  }
+}
+
+.heroWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  position: relative;
+  overflow-x: visible;
+  min-height: 600px;
+  padding: 48px 0;
+  
+  @media (min-width: 64rem) {
+    flex-direction: row;
+    gap: 200px;
+    padding: 80px 0;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 32px;
+  z-index: 1;
+  text-align: center;
+  min-width: 480px;
+  
+  @media (min-width: 64rem) {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.heroTitle {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  text-align: center;
+  margin: 0;
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-4xl);
+  }
+  
+  @media (min-width: 64rem) {
+    font-size: 3.5rem;
+    text-align: left;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-silver-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.heroDescription {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  
+  @media (min-width: 64rem) {
+    text-align: left;
+  }
+}
+
+.heroButtons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  @media (min-width: 64rem) {
+    justify-content: flex-start;
+  }
+}
+
+.heroButton {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  text-align: center;
+  text-decoration: none;
+  padding: 14px 32px;
+  width: fit-content;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.heroButtonPrimary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  color: var(--color-text-light);
+}
+
+.heroButtonSecondary {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-silver-500);
+}
+
+.heroStats {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  @media (min-width: 40rem) {
+    gap: 32px;
+  }
+  
+  @media (min-width: 64rem) {
+    gap: 48px;
+    flex-wrap: nowrap;
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statNumber {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+}
+
+.heroCard {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, var(--color-silver-300) 0%, var(--color-silver-400) 100%);
+  border-radius: 24px;
+  height: 400px;
+  margin-right: 0;
+  margin-top: 32px;
+  flex-shrink: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(54, 132, 142, 0.1) 0%, rgba(108, 117, 125, 0.1) 100%);
+    border-radius: 24px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  & > img {
+    object-fit: cover;
+    border-radius: 16px;
+    position: relative;
+    z-index: 0;
+  }
+  
+  @media (min-width: 64rem) {
+    width: 1000px;
+    height: 520px;
+    display: block;
+    margin-right: -600px;
+    margin-top: 0;
+  }
 }
