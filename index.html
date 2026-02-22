@@ -3,14 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My landing page</title>
+    <title>Silver Valley</title>
     <!-- CHANGE THESE VALUES -->
     <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styles/body.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
-  <body>
+  <body class="root" id="root" global-theme="light">
     <header id="header" class="header">
-
+      <div class="header-content">
+        <div class="header-logo">
+          <a href="#main">
+            <img src="assets/logo.png" alt="logo" width="100%" height="100%">
+          </a>
+        </div>
+        <div class="links">
+          <a href="#main">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="get-started">
+          <a href="#main">Get Started</a>
+        </div>
+      </div>
     </header>
     <main id="main" class="main">
 
