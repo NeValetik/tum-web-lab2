@@ -40,7 +40,7 @@
 .links {
   display: none;
 
-  gap: 12px;
+  gap: 24px;
   align-items: center;
   
   & > a {
@@ -63,17 +63,19 @@
 .get-started {
   display: flex;
   align-items: center;
-  & > a {
-    color: var(--color-text-primary);
-    text-decoration: none;
-    font-size: var(--font-size-xl);
-    line-height: 120%;
-    font-family: var(--font-family-primary);
+}
 
-    font-weight: var(--font-weight-normal);
-    transition: color 0.3s ease;
-    &:hover {
-      color: var(--color-accent);
-    }
-  }
+.button {
+  padding: 8px 24px;
+  border-radius: 12px;
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-normal);
+  transition: background-color 0.3s ease;
+}
+
+.get-started .button {
+  color: var(--color-text-light);
 }
