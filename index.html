@@ -13,6 +13,21 @@
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/mascot.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: 'var(--color-primary)',
+              'primary-dark': 'var(--color-primary-dark)',
+              'primary-light': 'var(--color-primary-light)',
+              accent: 'var(--color-accent)',
+              'accent-hover': 'var(--color-accent-hover)',
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body class="root" id="root" global-theme="light">
     <div id="mascot" 
@@ -44,7 +59,8 @@
           duration-300 ease-out backdrop-blur-sm 
           group-hover:opacity-100 group-hover:visible 
           group-hover:translate-y-0
-        ">
+        "
+      >
         <div class="flex flex-col gap-2">
           <p class="text-base font-bold text-gray-900 m-0 text-center">Welcome to Silver Valley!</p>
           <p class="text-sm text-gray-600 m-0 text-center leading-relaxed">Discover our exquisite collection of handcrafted silver jewelry!</p>
@@ -334,6 +350,14 @@
             </div>
           </div>
         </div>
+      </section>
+      <section id="scroll-to-top"> 
+        <div class="fixed bottom-2 left-2 md:invisible block w-10 h-10 flex z-[999]">
+          <a href="#main" class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+            <div class="text-2xl text-white -rotate-90 -translate-x-[4px]">></div>
+          </a>
+        </div>
+      </section>
     </main>
     <footer id="footer" class="footer">
       <div class="footer-content">
