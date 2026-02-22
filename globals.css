@@ -66,11 +66,13 @@
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
 
-  --breakpoint-sm: 40rem;   /* 640px */
-  --breakpoint-md: 48rem;   /* 768px */
-  --breakpoint-lg: 64rem;   /* 1024px */
-  --breakpoint-xl: 80rem;   /* 1280px */
-  --breakpoint-2xl: 96rem;  /* 1536px */
+  /* Breakpoints:
+     sm: 40rem (640px)
+     md: 48rem (768px)
+     lg: 64rem (1024px)
+     xl: 80rem (1280px)
+     2xl: 96rem (1536px)
+  */
 }
 
 [global-theme="dark"]:root {
