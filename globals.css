@@ -1,0 +1,89 @@
+:root {
+  --color-silver-100: #F8F9FA;
+  --color-silver-200: #E9ECEF;
+  --color-silver-300: #DEE2E6;
+  --color-silver-400: #CED4DA;
+  --color-silver-500: #ADB5BD;
+  
+  --color-silver-600: #6C757D;
+  --color-silver-700: #495057;
+  --color-silver-800: #343A40;
+  --color-silver-900: #212529;
+  
+  --color-primary: #6C757D;
+  --color-primary-dark: #495057;
+  --color-primary-light: #ADB5BD;
+  
+  --color-secondary: #495057;
+  --color-secondary-dark: #343A40;
+  --color-secondary-light: #CED4DA;
+  
+  --color-bg-primary: #F8F9FA;
+  --color-bg-secondary: #E9ECEF;
+  --color-bg-dark: #212529;
+  --color-bg-light: #F8F9FA;
+  
+  --color-text-primary: #212529;
+  --color-text-secondary: #6C757D;
+  --color-text-light: #F8F9FA;
+  --color-text-muted: #ADB5BD;
+  
+  --color-accent: #36848E;
+  --color-accent-hover: #2D6E76;
+  
+  --color-border: #DEE2E6;
+  --color-border-light: #E9ECEF;
+  --color-border-dark: #ADB5BD;
+
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  
+  --color-shadow: rgba(33, 37, 41, 0.1);
+  --color-shadow-dark: rgba(33, 37, 41, 0.2);
+
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-secondary: Georgia, 'Times New Roman', serif;
+  --font-family-mono: 'Courier New', Courier, monospace;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  --breakpoint-sm: 40rem;   /* 640px */
+  --breakpoint-md: 48rem;   /* 768px */
+  --breakpoint-lg: 64rem;   /* 1024px */
+  --breakpoint-xl: 80rem;   /* 1280px */
+  --breakpoint-2xl: 96rem;  /* 1536px */
+}
+
+[global-theme="dark"]:root {
+  --color-bg-primary: #212529;
+  --color-bg-secondary: #343A40;
+  --color-bg-dark: #495057;
+  --color-bg-light: #6C757D;
+  --color-text-primary: #F8F9FA;
+  --color-text-secondary: #CED4DA;
+  --color-text-light: #F8F9FA;
+  --color-text-muted: #ADB5BD;
+  
+  --color-border: #495057;
+  --color-border-light: #6C757D;
+  --color-border-dark: #343A40;
+}
