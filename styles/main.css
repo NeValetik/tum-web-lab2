@@ -228,10 +228,11 @@
   justify-content: center;
   width: 100%;
   max-width: 1280px;
-  padding: 100px 24px;
-  gap: 64px;
+  padding: 48px 16px;
+  gap: 40px;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
   
   &::before {
     content: '';
@@ -247,7 +248,13 @@
   }
   
   @media (min-width: 48rem) {
+    padding: 80px 24px;
+    gap: 56px;
+  }
+  
+  @media (min-width: 64rem) {
     padding: 120px 48px;
+    gap: 64px;
   }
 }
 
@@ -256,9 +263,18 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 64px;
+  gap: 40px;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+  
+  @media (min-width: 48rem) {
+    gap: 56px;
+  }
+  
+  @media (min-width: 64rem) {
+    gap: 64px;
+  }
 }
 
 .aboutHeader {
@@ -271,9 +287,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
   max-width: 800px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  
+  @media (min-width: 48rem) {
+    gap: 16px;
+    padding: 0;
+  }
 }
 
 .aboutSubtitle {
@@ -286,18 +309,24 @@
 }
 
 .aboutTitle {
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   text-align: center;
   margin: 0;
   color: var(--color-text-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   
   @media (min-width: 48rem) {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
   }
   
   @media (min-width: 64rem) {
+    font-size: var(--font-size-4xl);
+  }
+  
+  @media (min-width: 80rem) {
     font-size: 3.5rem;
   }
 }
@@ -313,8 +342,13 @@
 .aboutMain {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 48px;
   width: 100%;
+  box-sizing: border-box;
+  
+  @media (min-width: 48rem) {
+    gap: 64px;
+  }
   
   @media (min-width: 64rem) {
     gap: 100px;
@@ -324,19 +358,27 @@
 .aboutText {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 48px;
+  padding: 24px 20px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 249, 250, 0.9) 100%);
-  border-radius: 24px;
+  border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(192, 192, 192, 0.3);
   backdrop-filter: blur(10px);
+  box-sizing: border-box;
   
   @media (min-width: 48rem) {
+    padding: 40px 36px;
+    gap: 24px;
+    border-radius: 24px;
+  }
+  
+  @media (min-width: 64rem) {
     padding: 56px;
+    gap: 28px;
   }
 }
 
@@ -345,26 +387,28 @@
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-secondary);
-  text-align: center;
+  text-align: left;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   
   @media (min-width: 48rem) {
     font-size: var(--font-size-lg);
-    text-align: left;
   }
 }
 
 .aboutFeatures {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 24px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  box-sizing: border-box;
   
   @media (min-width: 48rem) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    gap: 28px;
   }
   
   @media (min-width: 64rem) {
@@ -376,15 +420,16 @@
 .aboutFeature {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 40px 32px;
+  gap: 16px;
+  padding: 24px 20px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.98) 100%);
-  border-radius: 20px;
+  border-radius: 16px;
   border: 1px solid rgba(192, 192, 192, 0.25);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
   
   &::before {
     content: '';
@@ -397,6 +442,18 @@
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
+  }
+  
+  @media (min-width: 48rem) {
+    padding: 32px 28px;
+    gap: 18px;
+    border-radius: 18px;
+  }
+  
+  @media (min-width: 64rem) {
+    padding: 40px 32px;
+    gap: 20px;
+    border-radius: 20px;
   }
   
   &:hover {
