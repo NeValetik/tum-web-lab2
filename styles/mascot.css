@@ -1,0 +1,204 @@
+@keyframes mascotEnter {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0) translateY(50px);
+  }
+  1% {
+    opacity: 0;
+    visibility: visible;
+  }
+  60% {
+    transform: scale(1.1) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes mascotCycle {
+  0%, 25% {
+    transform: translateY(0) rotate(0deg);
+  }
+  6.25% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  12.5% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+  18.75% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  
+  /* Rotate animation (25-50%) */
+  25.01%, 50% {
+    transform: rotate(0deg);
+  }
+  37.5% {
+    transform: rotate(180deg);
+  }
+  
+  /* Tilt animation (50-75%) */
+  50.01%, 75% {
+    transform: rotate(0deg);
+  }
+  62.5% {
+    transform: rotate(-15deg);
+  }
+  68.75% {
+    transform: rotate(15deg);
+  }
+  
+  /* Jump animation (75-100%) */
+  75.01%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  87.5% {
+    transform: translateY(-30px) scale(1.1);
+  }
+}
+
+@keyframes mascotIdle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes mascotJump {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.1);
+  }
+}
+
+@keyframes mascotRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mascotTilt {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+.animate-mascot-enter {
+  animation: mascotEnter 0.8s ease-out 3s forwards;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.animate-mascot-cycle {
+  animation: mascotCycle 20s ease-in-out infinite;
+  animation-delay: 3.8s; /* Start after enter animation completes */
+}
+
+.group:hover #mascot-character {
+  animation: mascotJump 0.6s ease-in-out infinite !important;
+}
+
+.mascot-container.position-bottom-right #mascot-tooltip,
+.mascot-container.position-bottom-left #mascot-tooltip {
+  bottom: 100%;
+  top: auto;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.mascot-container.position-top-right #mascot-tooltip,
+.mascot-container.position-top-left #mascot-tooltip {
+  top: 100%;
+  bottom: auto;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.mascot-container.position-bottom-right #mascot-tooltip,
+.mascot-container.position-top-right #mascot-tooltip {
+  right: 0;
+  left: auto;
+}
+
+.mascot-container.position-bottom-left #mascot-tooltip,
+.mascot-container.position-top-left #mascot-tooltip {
+  left: 0;
+  right: auto;
+}
+
+.mascot-container.position-bottom-right #tooltip-arrow,
+.mascot-container.position-bottom-left #tooltip-arrow {
+  bottom: -0.625rem;
+  top: auto;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #36848E;
+  border-bottom: none;
+}
+
+.mascot-container.position-bottom-right #tooltip-arrow {
+  right: 2rem;
+  left: auto;
+}
+
+.mascot-container.position-bottom-left #tooltip-arrow {
+  right: auto;
+  left: 2rem;
+}
+
+.mascot-container.position-top-right #tooltip-arrow,
+.mascot-container.position-top-left #tooltip-arrow {
+  top: -0.625rem;
+  bottom: auto;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #36848E;
+  border-top: none;
+}
+
+.mascot-container.position-top-right #tooltip-arrow {
+  right: 2rem;
+  left: auto;
+}
+
+.mascot-container.position-top-left #tooltip-arrow {
+  right: auto;
+  left: 2rem;
+}
+
+@media (max-width: 768px) {
+  #mascot {
+    width: 120px !important;
+    height: 120px !important;
+    bottom: 0.9375rem !important;
+    right: 0.9375rem !important;
+  }
+  
+  #mascot-tooltip {
+    min-width: 200px !important;
+    max-width: 250px !important;
+    padding: 0.75rem !important;
+  }
+}
