@@ -6,6 +6,9 @@ No HTTP libraries used - all requests are made via socket + ssl.
 import sys
 import argparse
 
+from http_client import http_request
+from html_parser import format_response
+
 
 def print_help():
     """Print usage help."""
@@ -20,6 +23,31 @@ def print_help():
     print("  go2web -u https://example.com")
     print('  go2web -s "python programming"')
     print("  go2web -u https://jsonplaceholder.typicode.com/posts/1")
+
+
+def fetch_url(url):
+    """Fetch a URL and print human-readable response."""
+    print(f"Fetching: {url}")
+    print()
+
+    try:
+        response = http_request(url)
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    if response.status_code >= 400:
+        print(f"HTTP Error {response.status_code}")
+        print()
+
+    text, links = format_response(response)
+    print(text)
+
+    if links:
+        print()
+        print("Links:")
+        for i, (text, href) in enumerate(links, 1):
+            print(f"  [{i}] {text} -> {href}")
 
 
 def main():
@@ -39,7 +67,7 @@ def main():
         sys.exit(0)
 
     if args.u:
-        print(f"[TODO] Fetching URL: {args.u}")
+        fetch_url(args.u)
 
     if args.s:
         search_term = " ".join(args.s)
