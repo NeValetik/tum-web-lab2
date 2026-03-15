@@ -19,6 +19,14 @@ def print_help():
     print("  go2web -u <URL>          Make an HTTP request to the specified URL and print the response")
     print("  go2web -s <search-term>  Search the term using DuckDuckGo and print top 10 results")
     print("  go2web -h                Show this help")
+    print("  go2web --clear-cache     Clear the HTTP cache")
+    print()
+    print("Features:")
+    print("  - HTTP/HTTPS via raw TCP sockets (no HTTP libraries)")
+    print("  - Automatic redirect following")
+    print("  - HTTP caching (Cache-Control, ETag, Last-Modified)")
+    print("  - Content negotiation (HTML + JSON)")
+    print("  - Human-readable output (HTML stripped, JSON pretty-printed)")
     print()
     print("Examples:")
     print("  go2web -u https://example.com")
@@ -98,8 +106,14 @@ def main():
     parser.add_argument("-u", type=str, help="URL to fetch")
     parser.add_argument("-s", nargs="+", help="Search term(s)")
     parser.add_argument("-h", "--help", action="store_true", help="Show help")
+    parser.add_argument("--clear-cache", action="store_true", help="Clear HTTP cache")
 
     args = parser.parse_args()
+
+    if args.clear_cache:
+        from cache import clear_cache
+        clear_cache()
+        sys.exit(0)
 
     if args.help or (not args.u and not args.s):
         print_help()

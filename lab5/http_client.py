@@ -164,14 +164,33 @@ def decode_chunked(data):
     return decoded
 
 
-def http_request(url, max_redirects=5, accept="text/html, application/json;q=0.9, */*;q=0.8"):
+def http_request(url, max_redirects=5, accept="text/html, application/json;q=0.9, */*;q=0.8", use_cache=True):
     """
     Make an HTTP/HTTPS request using raw sockets.
     Follows redirects up to max_redirects times.
+    Supports HTTP caching with Cache-Control, ETag, and Last-Modified.
     """
+    from cache import get_cached, save_to_cache, get_validation_headers
+
+    # Check cache first
+    if use_cache:
+        cached, is_fresh = get_cached(url)
+        if cached and is_fresh:
+            print("  [cache] Using cached response")
+            return HttpResponse(
+                cached["status_code"], cached["headers"],
+                cached["body"], cached["url"]
+            )
+
     for _ in range(max_redirects + 1):
         scheme, host, port, path = parse_url(url)
-        request_str = build_request("GET", host, path, accept=accept)
+
+        # Add conditional headers if we have a stale cache entry
+        extra_headers = {}
+        if use_cache:
+            extra_headers = get_validation_headers(url)
+
+        request_str = build_request("GET", host, path, extra_headers=extra_headers, accept=accept)
 
         # Create socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -193,6 +212,16 @@ def http_request(url, max_redirects=5, accept="text/html, application/json;q=0.9
         response = parse_response(raw)
         response.url = url
 
+        # Handle 304 Not Modified - use cached version
+        if response.status_code == 304 and use_cache:
+            cached, _ = get_cached(url)
+            if cached:
+                print("  [cache] Not modified, using cached response")
+                return HttpResponse(
+                    cached["status_code"], cached["headers"],
+                    cached["body"], cached["url"]
+                )
+
         # Handle redirects (3xx)
         if 300 <= response.status_code < 400:
             location = response.headers.get("location", "")
@@ -208,6 +237,10 @@ def http_request(url, max_redirects=5, accept="text/html, application/json;q=0.9
             print(f"  -> Redirecting to {location}")
             url = location
             continue
+
+        # Cache successful responses
+        if use_cache and 200 <= response.status_code < 300:
+            save_to_cache(url, response)
 
         return response
 
