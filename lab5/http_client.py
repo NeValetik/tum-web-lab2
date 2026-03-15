@@ -185,14 +185,12 @@ def http_request(url, max_redirects=5, accept="text/html, application/json;q=0.9
     for _ in range(max_redirects + 1):
         scheme, host, port, path = parse_url(url)
 
-        # Add conditional headers if we have a stale cache entry
         extra_headers = {}
         if use_cache:
             extra_headers = get_validation_headers(url)
 
         request_str = build_request("GET", host, path, extra_headers=extra_headers, accept=accept)
 
-        # Create socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(10)
 
@@ -200,6 +198,8 @@ def http_request(url, max_redirects=5, accept="text/html, application/json;q=0.9
             # Wrap with SSL if HTTPS
             if scheme == "https":
                 context = ssl.create_default_context()
+                context.check_hostname = False
+                context.verify_mode = ssl.CERT_NONE
                 sock = context.wrap_socket(sock, server_hostname=host)
 
             sock.connect((host, port))
