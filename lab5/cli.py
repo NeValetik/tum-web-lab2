@@ -8,6 +8,7 @@ import argparse
 
 from http_client import http_request
 from html_parser import format_response
+from search import search_duckduckgo, format_search_results
 
 
 def print_help():
@@ -16,7 +17,7 @@ def print_help():
     print()
     print("Usage:")
     print("  go2web -u <URL>          Make an HTTP request to the specified URL and print the response")
-    print("  go2web -s <search-term>  Search the term using Google and print top 10 results")
+    print("  go2web -s <search-term>  Search the term using DuckDuckGo and print top 10 results")
     print("  go2web -h                Show this help")
     print()
     print("Examples:")
@@ -46,8 +47,46 @@ def fetch_url(url):
     if links:
         print()
         print("Links:")
-        for i, (text, href) in enumerate(links, 1):
-            print(f"  [{i}] {text} -> {href}")
+        for i, (link_text, href) in enumerate(links, 1):
+            print(f"  [{i}] {link_text} -> {href}")
+
+
+def search(query):
+    """Search and display results, with option to open a result."""
+    print(f'Searching for: "{query}"')
+    print()
+
+    try:
+        results = search_duckduckgo(query)
+    except Exception as e:
+        print(f"Search error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    if not results:
+        print("No results found.")
+        return
+
+    print(format_search_results(results))
+
+    # Allow user to access a result
+    while True:
+        try:
+            choice = input("Enter result number to open (or 'q' to quit): ").strip()
+        except (EOFError, KeyboardInterrupt):
+            break
+
+        if choice.lower() in ('q', 'quit', ''):
+            break
+
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(results):
+                print()
+                fetch_url(results[idx].url)
+            else:
+                print(f"Please enter a number between 1 and {len(results)}")
+        except ValueError:
+            print("Please enter a valid number or 'q' to quit")
 
 
 def main():
@@ -71,7 +110,7 @@ def main():
 
     if args.s:
         search_term = " ".join(args.s)
-        print(f"[TODO] Searching for: {search_term}")
+        search(search_term)
 
 
 if __name__ == "__main__":
