@@ -19,6 +19,7 @@ def print_help():
     print("  go2web -u <URL>          Make an HTTP request to the specified URL and print the response")
     print("  go2web -s <search-term>  Search the term using DuckDuckGo and print top 10 results")
     print("  go2web -h                Show this help")
+    print("  go2web -u <URL> --json   Prefer JSON response via content negotiation")
     print("  go2web --clear-cache     Clear the HTTP cache")
     print()
     print("Features:")
@@ -34,16 +35,22 @@ def print_help():
     print("  go2web -u https://jsonplaceholder.typicode.com/posts/1")
 
 
-def fetch_url(url):
+def fetch_url(url, accept=None):
     """Fetch a URL and print human-readable response."""
     print(f"Fetching: {url}")
     print()
 
     try:
-        response = http_request(url)
+        kwargs = {}
+        if accept:
+            kwargs["accept"] = accept
+        response = http_request(url, **kwargs)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
+
+    print(f"[{response.status_code}] Content-Type: {response.content_type}")
+    print()
 
     if response.status_code >= 400:
         print(f"HTTP Error {response.status_code}")
@@ -106,6 +113,7 @@ def main():
     parser.add_argument("-u", type=str, help="URL to fetch")
     parser.add_argument("-s", nargs="+", help="Search term(s)")
     parser.add_argument("-h", "--help", action="store_true", help="Show help")
+    parser.add_argument("--json", action="store_true", help="Prefer JSON response (content negotiation)")
     parser.add_argument("--clear-cache", action="store_true", help="Clear HTTP cache")
 
     args = parser.parse_args()
@@ -119,8 +127,13 @@ def main():
         print_help()
         sys.exit(0)
 
+    # Content negotiation - choose preferred Accept header
+    accept = None
+    if args.json:
+        accept = "application/json, text/html;q=0.5, */*;q=0.1"
+
     if args.u:
-        fetch_url(args.u)
+        fetch_url(args.u, accept=accept)
 
     if args.s:
         search_term = " ".join(args.s)
