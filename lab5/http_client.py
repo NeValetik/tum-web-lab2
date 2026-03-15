@@ -1,6 +1,6 @@
 """
 Raw socket HTTP/HTTPS client.
-No HTTP libraries - uses only socket and ssl modules.
+No HTTP libraries - uses only socket and ssl modules (TLS for HTTPS).
 """
 
 import socket
@@ -195,9 +195,9 @@ def http_request(url, max_redirects=5, accept="text/html, application/json;q=0.9
         sock.settimeout(10)
 
         try:
-            # Wrap with SSL if HTTPS
+            # Wrap with TLS if HTTPS
             if scheme == "https":
-                context = ssl.create_default_context()
+                context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
                 context.check_hostname = False
                 context.verify_mode = ssl.CERT_NONE
                 sock = context.wrap_socket(sock, server_hostname=host)
