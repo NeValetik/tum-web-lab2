@@ -1,0 +1,29 @@
+---
+interface Props {
+  copyright?: string;
+  links?: { label: string; href: string }[];
+}
+
+const {
+  copyright = '© 2026 Silver Valley. All rights reserved.',
+  links = [
+    { label: 'Terms', href: '#terms' },
+    { label: 'Disclaimer', href: '#disclaimer' },
+    { label: 'Privacy', href: '#privacy' },
+    { label: 'Company Info', href: '#company-info' },
+  ],
+} = Astro.props;
+---
+
+<footer id="footer" class="footer">
+  <div class="footer-content">
+    <div class="footer-copyright">
+      <p>{copyright}</p>
+    </div>
+    <div class="footer-links">
+      {links.map((link) => (
+        <a href={link.href} class="footer-link">{link.label}</a>
+      ))}
+    </div>
+  </div>
+</footer>

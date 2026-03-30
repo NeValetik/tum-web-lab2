@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="root" id="root" global-theme="light">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/reset.css';
+  @import '../styles/globals.css';
+  @import '../styles/body.css';
+  @import '../styles/header.css';
+  @import '../styles/footer.css';
+  @import '../styles/main.css';
+  @import '../styles/mascot.css';
+</style>
