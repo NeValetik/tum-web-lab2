@@ -1,0 +1,62 @@
+---
+interface StatItem {
+  number: string;
+  label: string;
+}
+
+interface Props {
+  titleStart?: string;
+  titleHighlight?: string;
+  titleEnd?: string;
+  description?: string;
+  primaryButtonText?: string;
+  primaryButtonHref?: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+  stats?: StatItem[];
+  heroImage?: string;
+  heroImageAlt?: string;
+}
+
+const {
+  titleStart = 'Elegant',
+  titleHighlight = 'Silver Accessories',
+  titleEnd = 'for Every Occasion',
+  description = 'Discover our exquisite collection of handcrafted silver jewelry and accessories. Each piece is carefully designed to bring timeless elegance and sophistication to your style.',
+  primaryButtonText = 'Shop Collection',
+  primaryButtonHref = '#main',
+  secondaryButtonText = 'Our Story',
+  secondaryButtonHref = '#about',
+  stats = [
+    { number: '925', label: 'Sterling Silver' },
+    { number: '1000+', label: 'Unique Designs' },
+    { number: '5★', label: 'Customer Rating' },
+  ],
+  heroImage = '/hero-card.png',
+  heroImageAlt = 'hero-card',
+} = Astro.props;
+---
+
+<section class="heroWrapper" id="hero">
+  <div class="heroContent">
+    <h1 class="heroTitle">
+      {titleStart} <span class="gradient-text">{titleHighlight}</span> {titleEnd}
+    </h1>
+    <p class="heroDescription">{description}</p>
+    <div class="heroButtons">
+      <a class="heroButton heroButtonPrimary" href={primaryButtonHref}>{primaryButtonText}</a>
+      <a class="heroButton heroButtonSecondary" href={secondaryButtonHref}>{secondaryButtonText}</a>
+    </div>
+    <div class="heroStats">
+      {stats.map((stat) => (
+        <div class="statItem">
+          <div class="statNumber">{stat.number}</div>
+          <div class="statLabel">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="heroCard">
+    <img src={heroImage} alt={heroImageAlt} width="100%" height="100%" />
+  </div>
+</section>
