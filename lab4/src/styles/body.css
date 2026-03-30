@@ -1,0 +1,33 @@
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+.root {
+  background-color: var(--color-bg-primary);
+  max-width: 100vw;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-snap-align: start;
+
+  scrollbar-width: 4px;
+  scrollbar-color: var(--color-primary) var(--color-bg-primary);
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--color-bg-primary);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+  }
+}
