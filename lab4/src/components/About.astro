@@ -1,0 +1,70 @@
+---
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  subtitle?: string;
+  title?: string;
+  titleHighlight?: string;
+  paragraphs?: string[];
+  features?: Feature[];
+}
+
+const {
+  subtitle = 'Our Story',
+  title = 'About',
+  titleHighlight = 'Silver Valley',
+  paragraphs = [
+    'Welcome to Silver Valley, where timeless elegance meets exceptional craftsmanship. We are a team of passionate artisans who are dedicated to creating exquisite silver jewelry and accessories that celebrate beauty, quality, and individuality.',
+    'Founded with a vision to bring authentic, handcrafted silver pieces to discerning customers worldwide, Silver Valley has been at the forefront of fine jewelry design for over two decades. Our commitment to excellence is reflected in every piece we create, from delicate earrings to statement necklaces, each meticulously crafted to perfection.',
+    'We source only the finest 925 sterling silver, ensuring that every item in our collection meets the highest standards of quality and durability. Our skilled craftsmen combine traditional techniques with contemporary design sensibilities, resulting in pieces that are both classic and modern.',
+  ],
+  features = [
+    {
+      title: 'Craftsmanship',
+      description: 'Each piece is handcrafted by skilled artisans with years of experience, ensuring attention to detail and superior quality.',
+    },
+    {
+      title: 'Quality Materials',
+      description: 'We use only 925 sterling silver, the highest standard for silver jewelry, guaranteeing longevity and lasting beauty.',
+    },
+    {
+      title: 'Unique Designs',
+      description: 'Our collection features over 1000 unique designs, from minimalist elegance to bold statement pieces, catering to every style.',
+    },
+    {
+      title: 'Customer Satisfaction',
+      description: 'Your satisfaction is our priority. We offer lifetime warranties and exceptional customer service to ensure your complete happiness.',
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="aboutWrapper" id="about">
+  <div class="aboutContent">
+    <div class="aboutHeader">
+      <div class="aboutTitleWrapper">
+        <span class="aboutSubtitle">{subtitle}</span>
+        <h2 class="aboutTitle">{title} <span class="gradient-text">{titleHighlight}</span></h2>
+        <div class="titleDivider"></div>
+      </div>
+    </div>
+    <div class="aboutMain">
+      <div class="aboutText">
+        {paragraphs.map((p) => (
+          <p class="aboutDescription">{p}</p>
+        ))}
+      </div>
+      <div class="aboutFeatures">
+        {features.map((feature) => (
+          <div class="aboutFeature">
+            <h3 class="featureTitle">{feature.title}</h3>
+            <p class="featureDescription">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
