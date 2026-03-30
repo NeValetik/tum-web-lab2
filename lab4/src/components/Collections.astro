@@ -1,0 +1,64 @@
+---
+interface Product {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+  imageAlt: string;
+}
+
+interface Props {
+  subtitle?: string;
+  title?: string;
+  titleHighlight?: string;
+  products?: Product[];
+}
+
+const {
+  subtitle = 'Our Collection',
+  title = 'Silver',
+  titleHighlight = 'Jewelry',
+  products = [
+    { name: 'Silver Brooch', description: 'Elegant handcrafted brooch with intricate details', price: '$129.99', image: '/pic1-brooch.jpg', imageAlt: 'Silver Brooch' },
+    { name: 'Sterling Silver Ring', description: 'Timeless ring in 925 sterling silver', price: '$89.99', image: '/pic2-ring.jpg', imageAlt: 'Sterling Silver Ring' },
+    { name: 'Silver Brooch', description: 'Vintage-inspired brooch with decorative design', price: '$139.99', image: '/pic3-brooch.jpg', imageAlt: 'Silver Brooch' },
+    { name: 'Silver Earrings', description: 'Delicate earrings with elegant design', price: '$79.99', image: '/pic4-earrings.jpg', imageAlt: 'Silver Earrings' },
+    { name: 'Star Earrings', description: 'Beautiful star-shaped earrings in sterling silver', price: '$94.99', image: '/pic5-star-earrings.jpg', imageAlt: 'Star Earrings' },
+    { name: 'Butterfly Brooch', description: 'Charming butterfly brooch with detailed wings', price: '$149.99', image: '/pic6-butterfly-brooch.jpg', imageAlt: 'Butterfly Brooch' },
+    { name: 'Stone Earrings', description: 'Elegant earrings with gemstone accents', price: '$119.99', image: '/pic7-stone-earrings.jpg', imageAlt: 'Stone Earrings' },
+    { name: 'Sphere Earrings', description: 'Modern spherical earrings with sleek design', price: '$84.99', image: '/pic8-sphere-earrings.jpg', imageAlt: 'Sphere Earrings' },
+    { name: 'Poe-like Ring', description: 'Unique ring with distinctive poe-inspired design', price: '$109.99', image: '/pic9-poe-like-ring.jpg', imageAlt: 'Poe-like Ring' },
+    { name: 'Silver Necklace', description: 'Timeless pendant necklace in 925 sterling silver', price: '$149.99', image: '/pic10-necklace.jpg', imageAlt: 'Silver Necklace' },
+  ],
+} = Astro.props;
+---
+
+<section class="collectionsWrapper" id="collections">
+  <div class="collectionsContent">
+    <div class="collectionsHeader">
+      <div class="collectionsTitleWrapper">
+        <span class="collectionsSubtitle">{subtitle}</span>
+        <h2 class="collectionsTitle">{title} <span class="gradient-text">{titleHighlight}</span></h2>
+        <div class="titleDivider"></div>
+      </div>
+    </div>
+    <div class="collectionsScrollContainer">
+      <div class="collectionsCards">
+        {products.map((product) => (
+          <div class="collectionCard">
+            <div class="cardImage">
+              <img src={product.image} alt={product.imageAlt} width="100%" height="100%" />
+            </div>
+            <div class="cardContent">
+              <div class="cardTextBlock">
+                <h3 class="cardTitle">{product.name}</h3>
+                <p class="cardDescription">{product.description}</p>
+              </div>
+              <div class="cardPrice">{product.price}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
