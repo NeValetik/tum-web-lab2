@@ -5,7 +5,20 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git checkout:*)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(cd:*)",
+      "Bash(pip install:*)",
+      "Bash(E:/wlabs/lab5/dist/go2web.exe -h 2>&1)",
+      "Bash(E:/wlabs/lab5/dist/go2web.exe -u https://jsonplaceholder.typicode.com/posts/1 2>&1)",
+      "Bash(echo:*)",
+      "Bash(npm --version)",
+      "Bash(npm install:*)",
+      "Bash(mkdir -p lab4/src/styles)",
+      "Bash(cp reset.css lab4/src/styles/)",
+      "Bash(cp globals.css lab4/src/styles/)",
+      "Bash(cp styles/body.css lab4/src/styles/)",
+      "Bash(cp styles/header.css lab4/src/styles/)"
     ]
-  }
+  },
+  "spinnerTipsEnabled": false
 }

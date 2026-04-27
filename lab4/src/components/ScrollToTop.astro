@@ -1,0 +1,39 @@
+---
+
+---
+
+<section id="scroll-to-top">
+  <a href="#main" class="scroll-to-top-btn" aria-label="Scroll to top">
+    <span class="scroll-to-top-icon">&#8250;</span>
+  </a>
+</section>
+
+<style>
+  .scroll-to-top-btn {
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    text-decoration: none;
+  }
+
+  .scroll-to-top-icon {
+    font-size: 1.5rem;
+    color: white;
+    transform: rotate(-90deg) translateX(-4px);
+    display: block;
+  }
+
+  @media (min-width: 48rem) {
+    .scroll-to-top-btn {
+      display: none;
+    }
+  }
+</style>

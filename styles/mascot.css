@@ -106,14 +106,14 @@
 }
 
 .animate-mascot-enter {
-  animation: mascotEnter 0.8s ease-out 3s forwards;
+  animation: mascotEnter 0.2s ease-out 0s forwards;
   opacity: 0;
   visibility: hidden;
 }
 
 .animate-mascot-cycle {
   animation: mascotCycle 20s ease-in-out infinite;
-  animation-delay: 3.8s; /* Start after enter animation completes */
+  animation-delay: 2s; /* Start after enter animation completes */
 }
 
 .group:hover #mascot-character {
